@@ -1,5 +1,8 @@
 import React from 'react';
+import {useHistory} from 'react-router-dom'
+import Home_body from './Homebody';
 export default function Navbar() {
+	let history=useHistory();
 	return (
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
@@ -39,15 +42,16 @@ export default function Navbar() {
 					</ul>
 				</div>
 				<ul class="nav navbar-nav navbar-right">
-					<button type="button" class="btn btn-success">
+					<button type="button" class="btn btn-success" onClick={()=>history.push("/Login")}>
 						Login
 					</button>
 					&nbsp;&nbsp;
-					<button type="button" class="btn btn-success">
+					<button type="button" class="btn btn-success"  onClick={()=>history.push("/Register")}>
 						Register
 					</button>
 				</ul>
 			</div>
 		</nav>
+
 	);
 }
