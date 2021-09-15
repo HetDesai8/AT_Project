@@ -1,13 +1,49 @@
 import React from 'react';
-import properties from './properties.png';
+// import properties from './properties.png';
 import './Homebody.css';
+import OIP from '../Images/OIP.jpeg';
 export default function Home_body() {
+
+	const carou={
+		marginLeft:"15%",
+		width:"70%"
+		
+	};
+
 	return (
+		
 		<div>
 			<br />
+			<div class="demo" style={carou}>
 			<div class="jumbotron">
 				<div class="contain text-center">
-					<img src={properties} width="1000px" height="250px" />
+				<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src={OIP} class="d-block w-100" alt="..." height="300px"/>
+    </div>
+    <div class="carousel-item">
+      <img src="https://source.unsplash.com/1600x900/?housing" class="d-block w-100" alt="..."/>
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="..."/>
+    </div>
+	<div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="..." />
+    </div>
+	<div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="..."/>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div></div>
 					<h1>Real Estate Management System</h1>
 				</div>
 
@@ -28,7 +64,7 @@ export default function Home_body() {
 			</div>
 
 			<br />
-			<div class="container">
+			{/* <div class="container">
 				<button class="btn btn-primary btn-lg" >
 					Limited Time Deals
 				</button>
@@ -44,7 +80,7 @@ export default function Home_body() {
 				<button class="btn btn-primary btn-lg" >
 					Cart
 				</button>
-			</div>
+			</div> */}
 		</div>
 	);
 }
