@@ -1,7 +1,6 @@
 import React from 'react';
 // import properties from './properties.png';
 import './Homebody.css';
-import OIP from '../Images/OIP.jpeg';
 export default function Home_body() {
 
 	const carou={
@@ -20,19 +19,16 @@ export default function Home_body() {
 				<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src={OIP} class="d-block w-100" alt="..." height="300px"/>
+      <img src="https://source.unsplash.com/1600x900/?housing" class="d-block w-100" alt="..." height="300px"/>
     </div>
     <div class="carousel-item">
-      <img src="https://source.unsplash.com/1600x900/?housing" class="d-block w-100" alt="..."/>
+      <img src="https://source.unsplash.com/1600x900/?home" class="d-block w-100" alt="..." height="300px"/>
     </div>
     <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="..."/>
+      <img src="https://source.unsplash.com/1600x900/?house" class="d-block w-100" alt="..." height="300px"/>
     </div>
 	<div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="..." />
-    </div>
-	<div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="..."/>
+      <img src="https://source.unsplash.com/1600x900/?building" class="d-block w-100" alt="..." height="300px"/>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -64,23 +60,7 @@ export default function Home_body() {
 			</div>
 
 			<br />
-			{/* <div class="container">
-				<button class="btn btn-primary btn-lg" >
-					Limited Time Deals
-				</button>
-				&nbsp;&nbsp;
-				<button class="btn btn-primary btn-lg" >
-					Find Agent
-				</button>
-				&nbsp;&nbsp;
-				<button class="btn btn-primary btn-lg" >
-					Purchased Properties
-				</button>
-				&nbsp;&nbsp;
-				<button class="btn btn-primary btn-lg" >
-					Cart
-				</button>
-			</div> */}
+			
 		</div>
 	);
-}
+		}

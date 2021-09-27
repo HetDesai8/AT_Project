@@ -1,21 +1,167 @@
 
-export default function Register()
+import React,{useState} from "react";
+
+
+
+
+function Register()
 {
+  let i;
+  
+  
+    const [fname,setfname]=useState("")
+    const [lname,setlname]=useState("")
+    const [uname,setuname]=useState("")
+    const [pwd1,setpwd1]=useState("")
+    const [pwd2,setpwd2]=useState("")
+    const [pwd3,setpwd3]=useState("")
+    const [cpwd,setcpwd]=useState("")
+    const [email,setemail]=useState("")
+    const [fnameErr,setfnameErr]=useState(false)
+    const [lnameErr,setlnameErr]=useState(false)
+    const [unameErr,setunameErr]=useState(false)
+    const [pwdErr1,setpwdErr1]=useState(false)
+    const [pwdErr2,setpwdErr2]=useState(false)
+    const [pwdErr3,setpwdErr3]=useState(false)
+    const [cpwdErr,setcpwdErr]=useState(false)
+    const [emailErr,setemailErr]=useState(false)
+
+  
+  function RegisterHandle(e)
+  {
+    if(!fname || !lname || uname.length<6 || pwd1.length<6 || cpwd != pwd1 && !email){
+      alert("enter correct values");
+    }
+    e.preventDefault()
+  }
+  function fnameHandler(e){
+    let item = e.target.value;
+    if(item.length<1)
+    {
+      setfnameErr(true)
+    }
+    else{
+      setfnameErr(false)
+    }
+    setfname(item);
+
+  }
+  function lnameHandler(e){
+    let item = e.target.value;
+    if(item.length<1)
+    {
+      setlnameErr(true)
+    }
+    else{
+      setlnameErr(false)
+    }
+    setlname(item);
+
+  }
+  function unameHandler(e){
+    let item = e.target.value;
+    
+    if(item.length<6)
+    {
+      setunameErr(true)
+    }
+    else{
+      setunameErr(false)
+    }
+    setuname(item);
+
+  }
+  function pwdHandler(e){
+    let item = e.target.value;
+    const n= /[0-9]/;
+    i=e.target.value;
+    if(item.length<6 )
+    {
+      setpwdErr1(true);
+    }
+    else{
+      setpwdErr1(false);
+    }
+     if((!item.includes("@")) && (!item.includes("_"))){
+      setpwdErr2(true);
+
+    }
+    else{
+      setpwdErr2(false);
+
+    }
+    if(! n.test(pwd1)){
+      setpwdErr3(true);
+    }
+    else{
+      
+      setpwdErr3(false);
+
+    }
+     setpwd1(item);
+    setpwd2(item);
+    setpwd3(item);
+
+
+  }
+  function cpwdHandler(e){
+    let item = e.target.value;
+    if(item != i)
+    {
+      setcpwdErr(true)
+    }
+    else{
+      setcpwdErr(false)
+    }
+    setcpwd(item);
+
+  }
+  function emailHandler(e){
+    let item = e.target.value;
+    const k=/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}/
+    if(! k.test(email))
+    {
+      setemailErr(true)
+    }
+    else{
+      setemailErr(false)
+    }
+    setemail(item);
+
+  }
+
+
     return(
-        <div class="login-page">
+        <div id="login-page">
         <div class="form">
-          <form class="register-form">
-            <input type="text" placeholder="Enter Firstname"/>
-            <input type="text" placeholder="Enter Lastname"/>
-            <input type="text" placeholder="Enter Username"/>
-            <input type="password" placeholder="Enter Password"/>
-            <input type="password" placeholder="Enter Confirm Password"/>
-            <input type="email" placeholder="Email"/>
+          <form class="register-form" onSubmit={RegisterHandle}>
+            <input type="text"  placeholder="Enter Firstname" onChange={fnameHandler}/>
+            {fnameErr?<p style={{color:"red",fontSize:"14px"}}> Required </p>:""}
+            <input type="text"  placeholder="Enter Lastname" onChange={lnameHandler}/>
+            {lnameErr?<p style={{color:"red",fontSize:"14px"}}> Required </p>:""}
+            <input type="text"  placeholder="Enter Username" onChange={unameHandler} />
+            {unameErr?<p style={{color:"red",fontSize:"14px"}}> User name must be greater then 6 </p>:""}
             
-            <button>Signup</button>
+            <input type="password"  placeholder="Enter Password" onChange={pwdHandler}/>
+            {pwdErr1?<p style={{color:"red",fontSize:"14px"}}> Password  must be greater then 6  </p>:""}
+            {pwdErr2?<p style={{color:"red",fontSize:"14px"}}> Password  must contains special character(@ or _)  </p>:""}
+            {pwdErr3?<p style={{color:"red",fontSize:"14px"}}> Password  must contains numeric value  </p>:""}
+           
+           
+           
+            <input type="password"  placeholder="Enter Confirm Password" onChange={cpwdHandler}/>
+            {cpwdErr?<p style={{color:"red",fontSize:"14px"}}> Not matched </p>:""}
+            
+            <input type="email"  placeholder="Email" onChange={emailHandler}/>
+            {emailErr?<p style={{color:"red",fontSize:"14px"}}> Not valid(Use format abc213@xyz.com) </p>:""}
+            
+            
+            <button >Signup</button>
             <p class="message">Already have an account? </p> Login
           </form>
         </div>
       </div>
     );
+  
 }
+export default Register;
