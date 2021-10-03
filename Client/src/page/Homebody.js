@@ -13,31 +13,31 @@ export default function Home_body() {
 		
 		<div>
 			<br />
-			<div class="demo" style={carou}>
-			<div class="jumbotron">
-				<div class="contain text-center">
-				<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://source.unsplash.com/1600x900/?housing" class="d-block w-100" alt="..." height="300px"/>
+			<div className="demo" style={carou}>
+			<div className="jumbotron">
+				<div className="contain text-center">
+				<div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div className="carousel-inner">
+    <div className="carousel-item active">
+      <img src="https://source.unsplash.com/1600x900/?housing" className="d-block w-100" alt="..." height="300px"/>
     </div>
-    <div class="carousel-item">
-      <img src="https://source.unsplash.com/1600x900/?home" class="d-block w-100" alt="..." height="300px"/>
+    <div className="carousel-item">
+      <img src="https://source.unsplash.com/1600x900/?home" className="d-block w-100" alt="..." height="300px"/>
     </div>
-    <div class="carousel-item">
-      <img src="https://source.unsplash.com/1600x900/?house" class="d-block w-100" alt="..." height="300px"/>
+    <div className="carousel-item">
+      <img src="https://source.unsplash.com/1600x900/?house" className="d-block w-100" alt="..." height="300px"/>
     </div>
-	<div class="carousel-item">
-      <img src="https://source.unsplash.com/1600x900/?building" class="d-block w-100" alt="..." height="300px"/>
+	<div className="carousel-item">
+      <img src="https://source.unsplash.com/1600x900/?building" className="d-block w-100" alt="..." height="300px"/>
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
+  <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span className="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
+  <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+    <span className="visually-hidden">Next</span>
   </button>
 </div></div>
 					<h1>Real Estate Management System</h1>
@@ -45,15 +45,15 @@ export default function Home_body() {
 
 				<br />
 			</div>
-			<div class="search">
-				<form class="d-flex">
+			<div className="search">
+				<form className="d-flex">
 					<input
-						class="form-control me-3"
+						className="form-control me-3"
 						type="search"
 						placeholder="Enter pincode or city name "
 						aria-label="Search"
 					/>
-					<button class="btn btn-dark mx-4" type="submit">
+					<button className="btn btn-dark mx-4" type="submit">
 						Search
 					</button>
 				</form>

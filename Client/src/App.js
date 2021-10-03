@@ -6,6 +6,7 @@ import Homepage from './page/Home';
 import Register from './page/Register';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { useState } from 'react';
+import Show from './page/Show';
 function App() {
 const [ user, setLoginUser] = useState({})
 
@@ -19,6 +20,9 @@ const [ user, setLoginUser] = useState({})
               user && user._id ? <Homepage setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser}/>
             } */}
             <Homepage/>
+          </Route>
+          <Route exact path="/Show">
+            <Show/>
           </Route>
           <Route path="/login">
             <Login setLoginUser={setLoginUser}/>

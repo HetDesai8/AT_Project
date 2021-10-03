@@ -19,7 +19,7 @@ export default function Login({setLoginUser})
   
   }
   const login = () => {
-    axios.post("http://localhost:5000/Login", user)
+    axios.post("http://localhost:5000/User/Login", user)
     .then(res => {
         alert(res.data.message)
         setLoginUser(res.data.user)
@@ -27,15 +27,15 @@ export default function Login({setLoginUser})
     })
   }
     return(
-        <div class="login-page">
-        <div class="form">
+        <div className="login-page">
+        <div className="form">
           
-          <form class="login-form" method="post" onSubmit={(e)=>e.preventDefault()}>
+          <form className="login-form" method="post" onSubmit={(e)=>e.preventDefault()}>
             <input type="text" name="username" value={user.username} placeholder="Enter username" onChange={manageData}/>
             <input type="password" name="password" value={user.password} placeholder="Enter password" onChange={manageData}/>
             <button onClick={login}>login</button>
             
-            <p class="message">Not registered? </p>Create an account
+            <p className="message">Not registered? </p>Create an account
           </form>
         </div>
       </div>

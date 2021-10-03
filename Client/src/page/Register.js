@@ -137,7 +137,7 @@ export default function Register() {
 	const SignUp = () => {
 		const { name, email, username, password, rePassword } = user;
 		if (name && email && password && username && password === rePassword) {
-			axios.post('http://localhost:5000/Register', user).then((res) => {
+			axios.post('http://localhost:5000/User/Register', user).then((res) => {
 				alert(res.data.message);
 				history.push('/login');
 			});
@@ -147,10 +147,10 @@ export default function Register() {
 	};
 
 	return (
-		<div class="login-page">
-			<div class="form">
+		<div className="login-page">
+			<div className="form">
 				<form
-					class="register-form"
+					className="register-form"
 					method="post"
 					onSubmit={(e) => e.preventDefault()}
 				>
@@ -240,7 +240,7 @@ export default function Register() {
 						''
 					)}
 					<button onClick={SignUp}>Signup</button>
-					<p class="message">Already have an account? </p> Login
+					<p className="message">Already have an account? </p> Login
 				</form>
 			</div>
 		</div>

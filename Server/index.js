@@ -1,65 +1,29 @@
-const express=require("express")
-const cors=require("cors")
-const mongoose=require("mongoose")
-const port=5000
+const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const path=require('path')
+const db = require('./db/index')
+const userRouter = require('./routes/userRouter')
+const fileRoutes=require('./routes/fileuploadRoute')
+
 const app = express()
-app.use(express.json())
-app.use(express.urlencoded())
+const apiPort = 5000
+
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
+app.use(bodyParser.json())
+app.use('/uploads',express.static('uploads'))
+console.log(__dirname);
 
-mongoose.connect("mongodb://localhost:27017/registerdemo",{
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-},()=>{
-    console.log("DB connected")
+db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+app.get('/',(req,res)=>{
+    res.send('hello');
 })
+app.get("/uploads", (req, res) =>{
 
-const userSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    username:String,
-    password: String
-})
-const User = new mongoose.model("User", userSchema)
-app.post("/Login",(req,res)=>{
-    const {username, password} = req.body
-    User.findOne({ username: username}, (err, user) => {
-        if(user){
-            if(password === user.password ) {
-                res.send({message: "Login Successfull", user: user})
-            } else {
-                res.send({ message: "Password didn't match"})
-            }
-        } else {
-            res.send({message: "User not registered"})
-        }
-    })
-})
+    res.sendFile(path.join(__dirname,'uploads')) 
+} ) ;
+app.use('/api', fileRoutes.routes);
+app.use('/User', userRouter)
 
-app.post("/Register",(req,res)=>{
-    const { name, email,username, password} = req.body
-    User.findOne({username: username}, (err, user) => {
-        if(user){
-            res.send({message: "User already registerd"})
-        } else {
-            const user = new User({
-                name,
-                email,
-                username,
-                password
-            })
-            user.save(err => {
-                if(err) {
-                    res.send(err)
-                } else {
-                    res.send( { message: "Successfully Registered, Please login now." })
-                }
-            })
-        }
-    })
-})
-
-
-app.listen(port,()=>{
-    console.log(`Example app listing at at port http://localhost:${port}`)
-})
+app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
