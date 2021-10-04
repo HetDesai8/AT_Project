@@ -1,6 +1,6 @@
-import React ,{useState, useEffect} from "react";
+import React ,{useState} from "react";
 import  {multipleFilesUpload} from './api'
-function Upload(props) {
+function Upload() {
     const [multipleFiles, setMultipleFiles] = useState('');
     const [city, setCity] =  useState('');
     const [address, setAddress] =  useState('');
@@ -8,11 +8,12 @@ function Upload(props) {
     const [contact, setContact] =  useState('');
     const [dimension, setDimension] =  useState('');
     const [price, setPrice] =  useState('');
+    const [room, setRoom] =  useState('');
 
     // const [multipleProgress, setMultipleProgress] = useState(0);
     const MultipleFileChange = (e) => {
         setMultipleFiles(e.target.files);
-        console.log(e.target.files);
+        // console.log(e.target.files.length);
     }
 
     const UploadMultipleFiles = async () => {
@@ -23,6 +24,7 @@ function Upload(props) {
         formData.append('contact', contact);
         formData.append('dimension', dimension);
         formData.append('price', price);
+        formData.append('room',room);
         for (let i = 0; i < multipleFiles.length; i++) {
             formData.append('files', multipleFiles[i]);                      
         }
@@ -33,7 +35,9 @@ function Upload(props) {
         setPincode('');
         setPrice('');
         setAddress('');
-        props.getMultiple();
+        setRoom('');
+        setMultipleFiles('');
+        // props.getMultiple();
     }
     return (
         <div className="container">
@@ -47,10 +51,12 @@ function Upload(props) {
             <input type="text"  placeholder="Enter contact no" value={contact} className="form-control" onChange={(e) => setContact(e.target.value) } />
             <label >Dimension</label>
             <input type="text"  placeholder="Enter Dimension" value={dimension} className="form-control" onChange={(e) => setDimension(e.target.value) } />
+            <label >Room details</label>
+            <input type="text"  placeholder="Enter Room details .." value={room} className="form-control" onChange={(e) => setRoom(e.target.value) } />
             <label >Price</label>
             <input type="text"  placeholder="Enter Price" value={price} className="form-control" onChange={(e) => setPrice(e.target.value) } />
             <label>Select Multiple Files</label>
-            <input type="file"  className="form-control" onChange={(e) => MultipleFileChange(e)} multiple />
+            <input type="file"  className="form-control"  onChange={(e) => MultipleFileChange(e)} multiple />
             <button type="button"  className="btn btn-dark" onClick={() => UploadMultipleFiles()}>Upload</button>
 
         </div>

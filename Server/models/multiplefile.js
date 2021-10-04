@@ -27,6 +27,10 @@ const mulitipleFileSchema = new Schema({
         type: String,
         required: true
     },
+    room :  {
+        type: String,
+        required: true
+    },
     files: [Object]
 }, {timestamps: true});
 

@@ -1,7 +1,7 @@
 import './Login.css'
 import React ,{useState}from 'react';
 import axios from "axios"
-import {useHistory} from 'react-router-dom';
+import {useHistory,Link} from 'react-router-dom';
 export default function Login({setLoginUser})
 {   
   const history = useHistory()
@@ -22,11 +22,13 @@ export default function Login({setLoginUser})
     axios.post("http://localhost:5000/User/Login", user)
     .then(res => {
         alert(res.data.message)
-        setLoginUser(res.data.user)
-        res.data.message=="Login Successfull"?(history.push("/")):(history.push("/login"))
+        // setLoginUser(res.data.user)
+        res.data.message==="Login Successfull"?(history.push("/")):(history.push("/login"))
     })
   }
     return(
+
+
         <div className="login-page">
         <div className="form">
           
@@ -35,7 +37,7 @@ export default function Login({setLoginUser})
             <input type="password" name="password" value={user.password} placeholder="Enter password" onChange={manageData}/>
             <button onClick={login}>login</button>
             
-            <p className="message">Not registered? </p>Create an account
+            <p className="message">Not registered? </p> <Link to='/register'>Create an account</Link>
           </form>
         </div>
       </div>

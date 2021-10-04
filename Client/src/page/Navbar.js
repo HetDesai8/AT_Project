@@ -42,8 +42,8 @@ export default function Navbar() {
 					</ul>
 				</div>
 				<ul className="nav navbar-nav navbar-right">
-				<button type="button" className="btn btn-success" onClick={()=>history.push("/Show")}>
-						Show
+				<button type="button" className="btn btn-success" onClick={()=>history.push("/Upload")}>
+						Add Property
 					</button>
 					&nbsp;&nbsp;
 					<button type="button" className="btn btn-success" onClick={()=>history.push("/Login")}>

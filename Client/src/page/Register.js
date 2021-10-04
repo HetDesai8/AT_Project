@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useHistory ,Link} from 'react-router-dom';
 export default function Register() {
 	let i;
 	const [name, setname] = useState('');
@@ -23,7 +23,7 @@ export default function Register() {
 			!name ||
 			uname.length < 6 ||
 			pwd1.length < 6 ||
-			(cpwd != pwd1 && !email)
+			(cpwd !== pwd1 && !email)
 		) {
 			alert('enter correct values');
 		}
@@ -73,7 +73,7 @@ export default function Register() {
 	}
 	function cpwdHandler(e) {
 		let item = e.target.value;
-		if (item != i) {
+		if (item !== pwd1) {
 			setcpwdErr(true);
 		} else {
 			setcpwdErr(false);
@@ -240,7 +240,7 @@ export default function Register() {
 						''
 					)}
 					<button onClick={SignUp}>Signup</button>
-					<p className="message">Already have an account? </p> Login
+					<p className="message">Already have an account? </p> <Link to='/login'>Login</Link>
 				</form>
 			</div>
 		</div>

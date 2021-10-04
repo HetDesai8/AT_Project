@@ -21,6 +21,7 @@ const multipleFileUpload = async (req, res, next) => {
             contact:req.body.contact,
             dimension :req.body.dimension,
             price : req.body.price,
+            room:req.body.room,
             files: filesArray 
         });
         await multipleFiles.save();

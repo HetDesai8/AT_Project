@@ -4,11 +4,11 @@ import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 import Login from './page/Login'
 import Homepage from './page/Home';
 import Register from './page/Register';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { useState } from 'react';
-import Show from './page/Show';
+import Upload from './page/Upload';
 function App() {
-const [ user, setLoginUser] = useState({})
+// const [ user, setLoginUser] = useState({})
 
   return (
     
@@ -21,11 +21,12 @@ const [ user, setLoginUser] = useState({})
             } */}
             <Homepage/>
           </Route>
-          <Route exact path="/Show">
-            <Show/>
+          <Route exact path="/Upload">
+            <Upload/>
           </Route>
           <Route path="/login">
-            <Login setLoginUser={setLoginUser}/>
+            <Login />
+            {/* setLoginUser={setLoginUser} */}
           </Route>
           <Route path="/register">
             <Register />
