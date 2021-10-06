@@ -42,17 +42,21 @@ export default function Navbar() {
 					</ul>
 				</div>
 				<ul className="nav navbar-nav navbar-right">
-				<button type="button" className="btn btn-success" onClick={()=>history.push("/Upload")}>
-						Add Property
-					</button>
+				
 					&nbsp;&nbsp;
-					<button type="button" className="btn btn-success" onClick={()=>history.push("/Login")}>
+					{localStorage.getItem("token")==null?(<span><button type="button" className="btn btn-success" onClick={()=>history.push("/Login")}>
 						Login
 					</button>
 					&nbsp;&nbsp;
 					<button type="button" className="btn btn-success"  onClick={()=>history.push("/Register")}>
 						Register
-					</button>
+					</button></span>):
+					<span>
+						
+					(<button type="button" className="btn btn-success" onClick={()=>history.push("/Logout")}>
+						Logout
+					</button>)
+						</span>}
 				</ul>
 			</div>
 		</nav>

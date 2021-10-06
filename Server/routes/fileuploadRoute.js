@@ -7,6 +7,7 @@ const router = express.Router();
 router.post('/multipleFiles', upload.array('files'), multipleFileUpload);
 router.get('/getMultipleFiles', getallMultipleFiles);
 
+router.get('/getFiles/:id',getFiles);
 
 module.exports = {
     routes: router

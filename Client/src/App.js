@@ -7,26 +7,29 @@ import Register from './page/Register';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { useState } from 'react';
 import Upload from './page/Upload';
+import Logout from './page/Logout';
+import Property from './page/Property';
 function App() {
-// const [ user, setLoginUser] = useState({})
-
   return (
     
     <div className="App">
       <Router>
         <Switch>
         <Route exact path="/">
-            {/* {
-              user && user._id ? <Homepage setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser}/>
-            } */}
             <Homepage/>
+          </Route>
+          <Route exact path="/Logout">
+            
+            <Logout/>
           </Route>
           <Route exact path="/Upload">
             <Upload/>
           </Route>
           <Route path="/login">
             <Login />
-            {/* setLoginUser={setLoginUser} */}
+          </Route>
+          <Route exact path="/Property/:id">
+            <Property/>
           </Route>
           <Route path="/register">
             <Register />

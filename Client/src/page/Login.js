@@ -1,9 +1,10 @@
 import './Login.css'
 import React ,{useState}from 'react';
 import axios from "axios"
-import {useHistory,Link} from 'react-router-dom';
+import {useHistory,Link,Redirect} from 'react-router-dom';
 export default function Login({setLoginUser})
-{   
+{  
+  const [isLogin,setLogin]=useState(false); 
   const history = useHistory()
   const [user,manageUser]=useState({
     username:"",
@@ -18,17 +19,25 @@ export default function Login({setLoginUser})
     })
   
   }
+  const check=()=>{
+    localStorage.setItem("token","Logged in") 
+    setLogin(true)
+    // console.log(isLogin)
+    history.push("/")
+  }
   const login = () => {
     axios.post("http://localhost:5000/User/Login", user)
+    
     .then(res => {
+
         alert(res.data.message)
-        // setLoginUser(res.data.user)
-        res.data.message==="Login Successfull"?(history.push("/")):(history.push("/login"))
+        res.data.message==="Login Successfull"?(check()):(history.push("/login"))
     })
+   
   }
     return(
-
-
+      <div>
+        
         <div className="login-page">
         <div className="form">
           
@@ -40,6 +49,7 @@ export default function Login({setLoginUser})
             <p className="message">Not registered? </p> <Link to='/register'>Create an account</Link>
           </form>
         </div>
+      </div>
       </div>
     );
 }

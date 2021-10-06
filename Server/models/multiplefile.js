@@ -31,7 +31,11 @@ const mulitipleFileSchema = new Schema({
         type: String,
         required: true
     },
-    files: [Object]
+    files: [Object],
+    URL :  {
+        type: String,
+        required: true
+    },
 }, {timestamps: true});
 
 module.exports = mongoose.model('MultipleFile', mulitipleFileSchema);

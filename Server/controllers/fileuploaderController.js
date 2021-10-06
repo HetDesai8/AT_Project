@@ -5,7 +5,6 @@ const multipleFileUpload = async (req, res, next) => {
     try{
         let filesArray = [];
         req.files.forEach(element => {
-            // (element.path).replace(/\,'/')
             const file = {
                 fileName: element.originalname,
                 filePath: (element.path).replace(/\\/g, "/"),
@@ -22,6 +21,7 @@ const multipleFileUpload = async (req, res, next) => {
             dimension :req.body.dimension,
             price : req.body.price,
             room:req.body.room,
+            URL:req.body.URL,
             files: filesArray 
         });
         await multipleFiles.save();
@@ -41,6 +41,21 @@ const getallMultipleFiles = async (req, res, next) => {
     }
 }
 
+getFiles = async (req, res) => {
+    await  MultipleFile.findOne({ _id: req.params.id }, (err, files) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+
+        if (!files) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Data not found` })
+        }
+        return res.status(200).json({ success: true, data: files })
+    }).catch(err => console.log(err))
+}
+
 const fileSizeFormatter = (bytes, decimal) => {
     if(bytes === 0){
         return '0 Bytes';
@@ -54,5 +69,6 @@ const fileSizeFormatter = (bytes, decimal) => {
 
 module.exports = {
     multipleFileUpload,
-    getallMultipleFiles
+    getallMultipleFiles,
+    getFiles
 }

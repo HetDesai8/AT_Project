@@ -2,3 +2,32 @@
     width:600px;
     margin-left: 300px;
 }
+.content{
+    min-width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    overflow-x: auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    
+}
+.section {
+    width: 25%;
+    height: 25%;
+    flex: 0 0 auto;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.set{
+    height: 170px;
+    width: 170px;
+    align-self: center;
+}
+.card{
+    background-color: rgb(231, 229, 229);
+    border-radius: 10%;
+}
