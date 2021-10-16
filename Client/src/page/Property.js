@@ -16,6 +16,19 @@ export default function Property() {
 				setData(json);
 			});
 	}, []);
+	const AddIdToCart = () => {
+		console.log(data?.data._id)
+		axios.post("http://localhost:5000/User/AddItem",{'itemId':data?.data._id,'username':localStorage.getItem("username")})
+		.then(res => {
+			alert(res.data.message)
+			history.push("/Cart")
+		})
+
+	   
+	  }
+	 const Purchase=(id)=>{
+		 history.push(`/Purchase/${id}`);
+	 }
 
 	return (
 		<div>
@@ -122,8 +135,7 @@ export default function Property() {
 							</button>
 						</div>
 					</td>
-					<td align="center" width="30%" style={{fontFamily:"cursive"},{fontSize:"20px"}}>
-						{' '}
+					<td align="center" width="30%" style={{fontFamily:"cursive",fontSize:"20px"}}>
 						<b>City : </b>{data?.data.city}
 						<hr color="black" width="120px"/>
 						<b>Address : </b>{data?.data.address}
@@ -139,6 +151,9 @@ export default function Property() {
 						<b>Room : </b>{data?.data.room}
 						<hr color="black" width="85px"/>
                         <button type="button"  className="btn btn-dark" onClick={() => history.push("/")}>Back</button>&nbsp;&nbsp;
+						<button type="button"  className="btn btn-dark" onClick={AddIdToCart}>Add to cart</button>&nbsp;&nbsp;
+						<button type="button"  className="btn btn-dark" onClick={() => Purchase(data?.data._id)}>Buy</button>&nbsp;&nbsp;
+					
 					</td>
 					<td width="33%">
 					<iframe src={data?.data.URL} width="400" height="300" style={{border:"0"}} allowfullscreen="" loading="lazy"></iframe>

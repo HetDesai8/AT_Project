@@ -1,6 +1,6 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom'
-import Home_body from './Homebody';
+
 export default function Navbar() {
 	let history=useHistory();
 	return (
@@ -24,8 +24,9 @@ export default function Navbar() {
 					<ul className="navbar-nav me-auto mb-2 mb-lg-0">
 						<li className="nav-item">
 							<a className="nav-link active" aria-current="page" href="#">
-								Home
+							  Home
 							</a>
+
 						</li>
 
 						<li className="nav-item">

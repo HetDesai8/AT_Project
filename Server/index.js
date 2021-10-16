@@ -23,6 +23,7 @@ app.get('/uploads', (req, res) => {
 	res.sendFile(path.join(__dirname, 'uploads'));
 });
 app.use('/api', fileRoutes.routes);
+// app.use('/api', cartRoutes.routes);
 app.use('/User', userRouter);
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));

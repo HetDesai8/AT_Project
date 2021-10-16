@@ -21,6 +21,7 @@ export default function Login({setLoginUser})
   }
   const check=()=>{
     localStorage.setItem("token","Logged in") 
+    localStorage.setItem("username",user.username)
     setLogin(true)
     // console.log(isLogin)
     history.push("/")

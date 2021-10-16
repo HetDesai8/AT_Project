@@ -9,6 +9,7 @@ export default function Home_body() {
 		width: '70%',
 	};
 	const [multipleFiles, setMultipleFiles] = useState([]);
+	const [search, setSearch] = useState("");
 	const getMultipleFilesList = async () => {
 		try {
 			const fileslist = await getMultipleFiles();
@@ -23,10 +24,16 @@ export default function Home_body() {
 		getMultipleFilesList();
 	}, []);
 	const display = (id) => {
-		// console.log(id)
-		// 
 		history.push(`/Property/${id}`)
 	};
+	const ChangeSearch = (e) => {
+		setSearch(e.target.value)
+		console.log(search)
+
+	}
+	const filterCity = multipleFiles.filter(element => {
+		return element.city.toLowerCase().indexOf(search.toLowerCase()) !== -1
+	})
 
 	return (
 		<div>
@@ -123,19 +130,23 @@ export default function Home_body() {
 						Commercial
 					</button>
 					&nbsp;
-					<button type="button" className="btn btn-success">
+					<button type="button" className="btn btn-success"
+					onClick={() => history.push('/Cart')}
+					>
 						Cart
 					</button>
 				</span>
 			)}
+			<br />
 			<div className="search">
 				<br />
-				<form className="d-flex">
+				<form className="d-flex" onSubmit={(e) => e.preventDefault()}>
 					<input
 						className="form-control me-3"
 						type="search"
-						placeholder="Enter pincode or city name "
+						placeholder="Search City... "
 						aria-label="Search"
+						onChange={ChangeSearch}
 					/>
 					<button className="btn btn-dark mx-4" type="submit">
 						Search
@@ -143,38 +154,35 @@ export default function Home_body() {
 				</form>
 			</div>
 			<br/>
+			<div className="container">
+			<table class="table table-striped table-hover table-bordered ">
+				
+				<thead>
+					<tr>
+						<th scope="col">Image</th>
+						<th scope="col">City</th>
+						<th scope="col">Price</th>
+						<th scope="col"></th>
+					</tr>
+				</thead>
+				<tbody>
+				{filterCity?.map((element, index) => (	<tr >
+						<td><img
+							src={`http://localhost:5000/${element.files[0].filePath}`}
+							className="card-img-top img-responsive set"
+							alt="img"
+							style={{ borderRadius: '10%' }}
+						/></td>
+						<td>{element.city}</td>
+						<td>{element.price}</td>
+						<td><button type="button" className="btn btn-success" onClick={() => display(element._id)}>View</button></td>
+
+					</tr>))}
+				</tbody>
+			</table>
+			</div>
 			
-			<table><tr><div className="content">{multipleFiles.map((element, index) => (<td className="section">
-					<div key={element._id}>
-						
-							<div className="card border-3">
-								<img
-									src={`http://localhost:5000/${element.files[0].filePath}`}
-									className="card-img-top img-responsive set"
-									alt="img"
-									style={{ borderRadius: '50%' }}
-								/>
-							
-								<div className="card-body">
-									<p className="card-text">
-										<h6 className="text-dark font-weight-bold">
-											{element.city}
-										</h6>
-										{localStorage.getItem("token")==null?<div></div>:<h6 className="text-dark font-weight-bold">
-											Price : {element.price}
-										</h6>}
-										<button
-											className="btn btn-dark mx-4"
-											type="submit"
-											onClick={() => display(element._id)}
-										>
-											View more
-										</button>
-									</p>
-								</div>
-						</div>
-					</div>
-				</td>))}</div></tr></table>
+			
 				
 			
 		</div>
