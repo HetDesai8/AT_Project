@@ -7,5 +7,9 @@ router.post('/Register', userctrl.userRegister)
 router.post('/ViewCart', userctrl.userViewItem)
 router.post('/DeleteCart', userctrl.userDeleteItem)
 router.post('/AddItem', userctrl.userAddItem)
+router.post('/buyProperty',userctrl.userBuyProperty)
+router.post('/viewProperty',userctrl.userViewProperty)
+
+
 
 module.exports = router

@@ -12,15 +12,15 @@ const mulitipleFileSchema = new Schema({
         required: true
     },
     pincode :  {
-        type: String,
+        type: Number,
         required: true
     },
     contact : {
-        type: String,
+        type: Number,
         required: true
     },
     dimension :  {
-        type: String,
+        type: Number,
         required: true
     },
     price :  {
@@ -36,6 +36,11 @@ const mulitipleFileSchema = new Schema({
         type: String,
         required: true
     },
+    Is_sold:{
+        type: Boolean,
+        default:false
+    },
+    
 }, {timestamps: true});
 
 module.exports = mongoose.model('MultipleFile', mulitipleFileSchema);

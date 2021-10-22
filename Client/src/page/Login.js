@@ -32,7 +32,7 @@ export default function Login({setLoginUser})
     .then(res => {
 
         alert(res.data.message)
-        res.data.message==="Login Successfull"?(check()):(history.push("/login"))
+        res.data.message==="Login Successfully"?(check()):(history.push("/login"))
     })
    
   }

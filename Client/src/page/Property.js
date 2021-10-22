@@ -27,7 +27,13 @@ export default function Property() {
 	   
 	  }
 	 const Purchase=(id)=>{
+		 if(localStorage.getItem("username") == null)
+		 {
+			 history.push('/login');
+		 }
+		 else{
 		 history.push(`/Purchase/${id}`);
+		 }
 	 }
 
 	return (
@@ -151,9 +157,17 @@ export default function Property() {
 						<b>Room : </b>{data?.data.room}
 						<hr color="black" width="85px"/>
                         <button type="button"  className="btn btn-dark" onClick={() => history.push("/")}>Back</button>&nbsp;&nbsp;
-						<button type="button"  className="btn btn-dark" onClick={AddIdToCart}>Add to cart</button>&nbsp;&nbsp;
-						<button type="button"  className="btn btn-dark" onClick={() => Purchase(data?.data._id)}>Buy</button>&nbsp;&nbsp;
-					
+						{
+						 data?.data.Is_sold?
+						(<span></span>):
+						(<button type="button"  className="btn btn-dark" onClick={AddIdToCart}>Add to cart</button>)
+						}
+						&nbsp;&nbsp;
+						{
+						 data?.data.Is_sold ?
+						(<span><br/><br/>Sold</span>):
+						(<button type="button"  className="btn btn-dark" onClick={() => Purchase(data?.data._id)}>Buy</button>)
+						}
 					</td>
 					<td width="33%">
 					<iframe src={data?.data.URL} width="400" height="300" style={{border:"0"}} allowfullscreen="" loading="lazy"></iframe>

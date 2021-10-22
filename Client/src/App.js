@@ -11,6 +11,7 @@ import Logout from './page/Logout';
 import Property from './page/Property';
 import Cart from './page/Cart';
 import Purchase_property from './page/Purchase_property';
+import Own_property from './page/Own_property';
 function App() {
   return (
     
@@ -20,15 +21,20 @@ function App() {
         <Route exact path="/">
             <Homepage/>
           </Route>
+          <Route exact path="/Upload">
+            <Upload/>
+          </Route>
           <Route exact path="/Logout">
           
             <Logout/>
           </Route>
+          <Route exact path="/Purchased">
+          
+            <Own_property/>
+          </Route>
+          
           <Route exact path="/Purchase/:id">
             <Purchase_property/>
-          </Route>
-          <Route exact path="/Upload">
-            <Upload/>
           </Route>
           <Route path="/login">
             <Login />

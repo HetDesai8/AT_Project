@@ -122,12 +122,10 @@ export default function Home_body() {
 						Sell Property
 					</button>
 					&nbsp;
-					<button type="button" className="btn btn-warning">
+					<button type="button" className="btn btn-warning"
+					 onClick={() => history.push('/Purchased')}>
 						Purchase Property
-					</button>
-					&nbsp;
-					<button type="button" className="btn btn-danger">
-						Commercial
+						
 					</button>
 					&nbsp;
 					<button type="button" className="btn btn-success"
@@ -166,7 +164,7 @@ export default function Home_body() {
 					</tr>
 				</thead>
 				<tbody>
-				{filterCity?.map((element, index) => (	<tr >
+				{filterCity?.map((element, index) => ( element.Is_sold===false?	<tr >
 						<td><img
 							src={`http://localhost:5000/${element.files[0].filePath}`}
 							className="card-img-top img-responsive set"
@@ -177,7 +175,7 @@ export default function Home_body() {
 						<td>{element.price}</td>
 						<td><button type="button" className="btn btn-success" onClick={() => display(element._id)}>View</button></td>
 
-					</tr>))}
+					</tr>:<span></span>))}
 				</tbody>
 			</table>
 			</div>

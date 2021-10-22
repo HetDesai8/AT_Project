@@ -31,6 +31,8 @@ function Upload() {
             formData.append('files', multipleFiles[i]);                      
         }
         await multipleFilesUpload(formData);
+        alert("Upload Successfully")
+        history.push('/')
         setCity('');
         setContact('');
         setDimension('');

@@ -1,5 +1,5 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom'
+import {useHistory,Link} from 'react-router-dom'
 
 export default function Navbar() {
 	let history=useHistory();
@@ -7,7 +7,8 @@ export default function Navbar() {
 		<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div className="container-fluid">
 				<a className="navbar-brand" href="#">
-					<b>Real Estate Management System</b>
+				{/* <Link to='/'>Real Estate Management System</Link> */}
+				Real Estate Management System
 				</a>
 				<button
 					className="navbar-toggler"
@@ -29,17 +30,6 @@ export default function Navbar() {
 
 						</li>
 
-						<li className="nav-item">
-							<a className="nav-link active" aria-current="page" href="#">
-								About
-							</a>
-						</li>
-
-                        <li className="nav-item">
-							<a className="nav-link active" aria-current="page" href="#">
-								Contact Us
-							</a>
-						</li>
 					</ul>
 				</div>
 				<ul className="nav navbar-nav navbar-right">

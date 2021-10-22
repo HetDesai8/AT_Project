@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation,useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 export default function Purchase_property()
 {   
     let history=useHistory();
@@ -16,6 +17,17 @@ export default function Purchase_property()
 				setData(json);
 			});
 	}, []);
+    const Buy = () => {
+		console.log(data?.data._id)
+		axios.post("http://localhost:5000/User/buyProperty",{'itemId':data?.data._id,'username':localStorage.getItem("username")})
+		.then(res => {
+			alert(res.data.message)
+            // console.log(res.data)
+			history.push("/Purchased")
+		})
+
+	   
+	  }
     return (
         <div className="container">
             <h1>Buy Property</h1>
@@ -34,12 +46,12 @@ export default function Purchase_property()
             <label >Price</label>
             <input type="text"  placeholder="Enter Price" value={data?.data.price} className="form-control"/>
             <label >Account no</label>
-            <input type="text"  placeholder="Enter Your Account no" className="form-control"/>
+            <input type="text"  placeholder="Enter Your Account no" className="form-control" required/>
             
            
             <br/>
             <button type="button"  className="btn btn-dark" onClick={() => history.push("/")}>Back</button>&nbsp;&nbsp;
-            <button type="button"  className="btn btn-dark">Buy</button>&nbsp;&nbsp;
+            <button type="button"  className="btn btn-dark" onClick={Buy}>Buy</button>&nbsp;&nbsp;
         
 
 
